@@ -50,7 +50,12 @@ if st.checkbox("corr"):
     plt.figure(figsize=(12,10))
     sns.heatmap(corr, xticklabels=df.columns, yticklabels=df.columns,vmin=-1,vmax=1.0,annot=True)
     st.pyplot()
-
+    df2=df.copy()
+    df2 = df2[['age','cp','thalach','exang','oldpeak','slope','ca','thal']]
+    corr2 = df2.corr(method="pearson")
+    plt.figure(figsize=(12,10))
+    sns.heatmap(corr2, xticklabels=df2.columns, yticklabels=df2.columns,vmin=-1,vmax=1.0,annot=True)
+    st.pyplot()
 
 if st.button("corr"):
     corr = df.corr(method="pearson")
